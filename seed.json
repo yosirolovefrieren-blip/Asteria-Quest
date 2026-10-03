@@ -1,0 +1,150 @@
+[
+ {
+  "id": 1,
+  "type": "guild",
+  "title": "Dọn Chuột Hầm Rượu",
+  "desc": "Quán trọ Gió Sớm bị chuột phá hoại kho rượu. Xua đuổi khoảng 15 con chuột lớn.",
+  "rank": "F",
+  "area": "Làng Gió Sớm",
+  "gold": 300,
+  "gem": 10,
+  "item": "Bình rượu mơ",
+  "status": "open"
+ },
+ {
+  "id": 2,
+  "type": "guild",
+  "title": "Thu Thập Thảo Dược Quý",
+  "desc": "Thu thập 10 mầm thảo dược \"Linh Chi Băng\" ở khu rừng phía Bắc để chế thuốc hồi phục.",
+  "rank": "D+",
+  "area": "Rừng Phía Bắc",
+  "gold": 2000,
+  "gem": 100,
+  "item": "Lọ thuốc hồi phục",
+  "status": "open"
+ },
+ {
+  "id": 3,
+  "type": "guild",
+  "title": "Bảo Vệ Thương Nhân",
+  "desc": "Hộ tống đoàn thương nhân đến trạm tiếp tế phía Nam. Cảnh giác với thú vật hoang dã và nhóm cướp.",
+  "rank": "C",
+  "area": "Con đường phía Nam",
+  "gold": 3000,
+  "gem": 150,
+  "item": "Nhẫn Lữ Hành",
+  "status": "open"
+ },
+ {
+  "id": 4,
+  "type": "guild",
+  "title": "Săn Sói Băng",
+  "desc": "Tiêu diệt 20 con Sói Băng tại vùng núi phía Đông. Chúng thường xuất hiện vào buổi sáng.",
+  "rank": "B",
+  "area": "Núi Phía Đông",
+  "gold": 5500,
+  "gem": 220,
+  "stat": 2,
+  "item": "Nanh Sói Băng",
+  "status": "paused"
+ },
+ {
+  "id": 5,
+  "type": "guild",
+  "title": "Dấu Vết Của Những Kẻ Vô Diện",
+  "desc": "Điều tra nhóm Những Kẻ Vô Diện tại khu phòng thí nghiệm cũ của Asteria.",
+  "rank": "A+",
+  "area": "Khu thí nghiệm cũ",
+  "gold": 12000,
+  "gem": 400,
+  "stat": 5,
+  "skill": 1,
+  "item": "Thẻ Bài Bí Ẩn",
+  "status": "open"
+ },
+ {
+  "id": 6,
+  "type": "guild",
+  "title": "Rồng Đá Thức Giấc",
+  "desc": "Rồng Đá ở Hẻm Núi Xám đã thức dậy. Cần một đội tinh nhuệ ngăn nó tiến về thành.",
+  "rank": "S",
+  "area": "Hẻm Núi Xám",
+  "gold": 50000,
+  "gem": 1500,
+  "stat": 10,
+  "skill": 2,
+  "item": "Vảy Rồng Đá",
+  "status": "open"
+ },
+ {
+  "id": 7,
+  "type": "guild",
+  "title": "Lời Nguyền Hoàng Cung Cổ",
+  "desc": "Phong ấn tàn tích hoàng cung nơi một thực thể cổ xưa đang tỉnh lại.",
+  "rank": "SS+",
+  "area": "Hoàng cung đổ nát",
+  "gold": 120000,
+  "gem": 5000,
+  "item": "Vương Miện Tro Tàn",
+  "status": "expired"
+ },
+ {
+  "id": 8,
+  "type": "guild",
+  "title": "Lá Thư Không Người Gửi",
+  "desc": "Một phong thư niêm phong xuất hiện trên bảng. Không ai biết người gửi, địa điểm, hay mức nguy hiểm.",
+  "rank": "X",
+  "area": "Không rõ",
+  "gold": 1000,
+  "gem": 999,
+  "item": "Vật phẩm chưa rõ",
+  "status": "open"
+ },
+ {
+  "id": 9,
+  "type": "story",
+  "sub": "main",
+  "title": "Chương 1: Hành Trình Bắt Đầu",
+  "desc": "Bạn đặt chân đến Asteria và gặp vị Hội trưởng đầu tiên. Hãy đến Quảng trường để nhận phù hiệu.",
+  "area": "Quảng trường Asteria",
+  "status": "done"
+ },
+ {
+  "id": 10,
+  "type": "story",
+  "sub": "main",
+  "title": "Chương 2: Bóng Tối Dưới Học Viện",
+  "desc": "Những tiếng động lạ phát ra từ tầng hầm học viện. Tìm hiểu nguồn gốc cùng người bạn đồng hành.",
+  "area": "Học viện Asteria",
+  "status": "open"
+ },
+ {
+  "id": 12,
+  "type": "story",
+  "sub": "char",
+  "char": "Lyra",
+  "title": "Lyra: Lá Thư Chưa Gửi",
+  "desc": "Lyra giữ một lá thư chưa bao giờ gửi đi. Giúp cô tìm người nhận ở Thành Cảng.",
+  "area": "Thành Cảng",
+  "status": "open"
+ },
+ {
+  "id": 13,
+  "type": "story",
+  "sub": "char",
+  "char": "Kael",
+  "title": "Kael: Thanh Kiếm Gãy",
+  "desc": "Kael muốn rèn lại thanh kiếm của người thầy cũ. Tìm mảnh kiếm còn lại trong hầm mỏ.",
+  "area": "Hầm mỏ Xám",
+  "status": "paused"
+ },
+ {
+  "id": 11,
+  "type": "story",
+  "sub": "main",
+  "title": "Chương 3: Lời Thì Thầm Của Ngọn Lửa",
+  "desc": "Một đóa lửa xanh dẫn lối bạn đến ký ức bị lãng quên của thế giới.",
+  "area": "Đền Lửa Cổ",
+  "status": "paused"
+ }
+]

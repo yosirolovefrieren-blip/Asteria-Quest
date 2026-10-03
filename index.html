@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bảng Nhiệm Vụ Asteria</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Crimson+Pro:wght@400;600&display=swap">
+<style>
+:root{--wood:#1a110b;--wood2:#2a1c12;--parch:#e6d6b0;--parch2:#cdb682;
+--pg:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .32 0 0 0 0 .22 0 0 0 0 .08 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+--wg:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Cfilter id='w'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.008 .28' numOctaves='4' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 .05 0 0 0 0 .03 0 0 0 0 .01 0 0 0 1.4 -.25'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23w)'/%3E%3C/svg%3E");--ink:#3a2a1a;--gold:#d9ad55;--navy:#1d2b57;--sky:#8ab6e6;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*:before,*:after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;font-family:'Crimson Pro',Georgia,serif;color:var(--ink);background:radial-gradient(circle at 85% 6%,#7f93cc44,transparent 22%),linear-gradient(180deg,#070b19 0,#101936 38%,#0b130e 100%) fixed;min-height:100vh;font-size:16px}
+h1,h2,h3,.serif{font-family:'Cormorant Garamond',Georgia,serif}
+button{font:inherit;cursor:pointer}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.wrap{max-width:1180px;margin:0 auto;padding:12px}
+.top{display:flex;gap:14px;align-items:stretch;flex-wrap:wrap}
+.banner{background:var(--pg),linear-gradient(var(--navy),#0d1430);color:#e9dcb4;border:2px solid #a98a45;border-top:0;border-radius:0 0 14px 14px;padding:14px 20px 22px;text-align:center;min-width:170px;clip-path:polygon(0 0,100% 0,100% 88%,50% 100%,0 88%)}
+.banner b{display:block;font:italic 700 34px 'Cormorant Garamond',serif}
+.banner small{opacity:.8}
+.scroll{flex:1;min-width:260px;background:var(--pg),linear-gradient(var(--parch),var(--parch2));box-shadow:inset 0 0 24px #6a4a1c99,0 4px 14px #000a;border:2px solid #b89a5c;border-radius:10px;text-align:center;padding:10px 14px;}
+.scroll h1{margin:0;font-size:clamp(28px,5vw,42px);color:var(--ink)}
+.scroll p{margin:2px 0 0;font-size:15px}
+.adminbox{display:flex;flex-direction:column;gap:8px;justify-content:center;align-items:flex-end}
+.btn{background:linear-gradient(#f0d58c,#c99a3f);border:1px solid #7a5a1f;color:#2d1d08;border-radius:6px;padding:7px 14px;font-weight:600}
+.btn.dark{background:linear-gradient(#4a3524,#2b1d14);color:#f0dfb4;border-color:#a98a45}
+.btn.red{background:linear-gradient(#b24a3a,#7d2a20);color:#fff;border-color:#4a1510}
+.btn.sm{padding:3px 9px;font-size:14px}
+.board{margin-top:14px;background:var(--wg),repeating-linear-gradient(90deg,#0000 0 120px,#0006 120px 122px),linear-gradient(135deg,var(--wood2),var(--wood));border:5px solid #0d0804;outline:2px solid #6b5230;border-radius:12px;padding:14px;box-shadow:inset 0 0 60px #000c,0 12px 30px #000a}
+.tabs{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+.tab{flex:1;min-width:150px;padding:10px;background:var(--wg),#120a05;color:#cdb98c;border:1px solid #6b5230;border-radius:8px;font:700 20px 'Cormorant Garamond',serif}
+.tab[aria-selected=true]{background:linear-gradient(#f0d58c,#c99a3f);color:#2d1d08;border-color:#f0d58c}
+.main{display:grid;grid-template-columns:1fr 210px;gap:14px;align-items:start}
+.side{display:flex;flex-direction:column;gap:8px}
+.chip{text-align:left;padding:10px 12px;background:var(--wg),#150d07;color:#e5d3a6;border:1px solid #5d4527;border-radius:8px;font:700 17px 'Cormorant Garamond',serif}
+.chip small{display:block;font:14px 'Crimson Pro',serif;opacity:.7}
+.chip[aria-pressed=true]{border-color:var(--gold);box-shadow:0 0 12px #d9ad5566 inset;color:#ffe9ad}
+.group h2{color:#f0d58c;margin:4px 0 8px;font-size:24px;border-bottom:1px solid #6b5230;padding-bottom:4px}
+.group h2 span{font-size:17px;opacity:.75;font-weight:500;margin-left:6px}
+.grid{max-width:600px;margin-left:auto;margin-right:auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-bottom:18px}
+.card{aspect-ratio:1/1;display:flex;flex-direction:column;overflow:hidden;position:relative;text-align:left;background:var(--pg),radial-gradient(ellipse at center,var(--parch),var(--parch2));border:1px solid #8a6a2f;border-radius:5px;padding:16px 16px 14px;color:var(--ink);box-shadow:inset 0 0 26px #6a4a1ccc,0 5px 10px #000a;transition:transform .15s}
+.card.hasimg p{-webkit-line-clamp:2}
+.card .thumb{flex:1 1 0;min-height:0;height:auto}
+.card .admin-row{margin-top:auto;padding-top:6px}
+.card:before{content:'';position:absolute;top:5px;left:50%;width:10px;height:10px;margin-left:-5px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#f4d98a,#7a5418);box-shadow:0 2px 3px #0008}
+.card:hover{transform:translateY(-3px)}
+.card h3{margin:6px 0 4px;font-size:19px;line-height:1.15}
+.card p{margin:0;font-size:15px;display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden}
+.card .meta{display:flex;justify-content:space-between;align-items:center;gap:6px}
+.tag{font:700 13px 'Crimson Pro',serif;padding:1px 8px;border-radius:3px;color:#fff;background:#5a7a3a}
+.tag.story{background:#4a6fa8}
+.rank.plus{box-shadow:0 0 0 2px #fff8,0 0 0 4px currentColor}
+.rank{font:700 20px 'Cormorant Garamond',serif;min-width:34px;text-align:center;border-radius:50%;border:2px solid;padding:0 6px;background:#fff7;line-height:1.3}
+.r-F{color:#6b6b6b}.r-D{color:#3f8a3f}.r-C{color:#2f6fb5}.r-B{color:#7a45b0}.r-A{color:#d2791a}.r-S{color:#c0392b}.r-SS{color:#a8801a;box-shadow:0 0 8px #d9ad55}.r-X{color:#fff;background:#2a1a3a;border-color:#8a5fc0;box-shadow:0 0 8px #8a5fc0}
+.thumb{display:block;width:100%;height:110px;object-fit:cover;border:2px solid #8a6a2f;border-radius:3px;margin:8px 0 4px;filter:sepia(.25)}
+.modal .thumb{height:auto;max-height:240px}
+.stamp{position:absolute;right:10px;bottom:10px;transform:rotate(-10deg);font:700 17px 'Cormorant Garamond',serif;border:2px solid;padding:0 8px;border-radius:4px;background:#fff8}
+.s-done{color:#2f7a3f}.s-expired{color:#a33}.s-paused{color:#8a6a1a}
+.card.off{filter:saturate(.5) brightness(.93)}
+.admin-row{display:flex;gap:6px;margin-top:8px;position:relative;z-index:1}
+.empty{color:#cdb98c;padding:20px;text-align:center}
+.modal-bg{position:fixed;inset:0;background:#000a;display:flex;align-items:center;justify-content:center;padding:14px;z-index:10;overflow:auto}
+.modal{background:var(--pg),radial-gradient(ellipse at center,var(--parch),var(--parch2));box-shadow:inset 0 0 40px #6a4a1ccc,0 10px 40px #000;border:3px solid #a98a45;border-radius:8px;max-width:520px;width:100%;max-height:92%;overflow:auto;padding:18px 20px;position:relative;animation:pop .2s}
+@keyframes pop{from{transform:scale(.94);opacity:0}}
+@media (prefers-reduced-motion:reduce){.modal{animation:none}.card{transition:none}}
+.modal h2{margin:0 0 6px;font-size:28px}
+.x{position:absolute;right:10px;top:8px;background:none;border:0;font-size:26px;color:var(--ink)}
+.rows{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;margin:10px 0}
+.rows dt{font-weight:600}.rows dd{margin:0}
+.reward{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.aster{color:#a24bff;font-style:normal;font-size:1.15em;text-shadow:0 0 6px #a24bff88}
+.reward span{background:#fff6;border:1px solid #a98a45;border-radius:6px;padding:4px 10px;font-weight:600}
+label{display:block;font-weight:600;margin-top:8px}
+input,select,textarea{width:100%;font:inherit;padding:6px 8px;border:1px solid #a98a45;border-radius:4px;background:#fffaf0;color:var(--ink)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.err{color:#a33;min-height:1.2em;margin:6px 0 0}
+.foot{margin-top:16px;text-align:right}
+.hint{color:#e8d9ae;text-align:center;margin:10px 0 0;font-size:15px}
+@media (max-width:520px){.wrap{padding:8px}.board{padding:10px}.grid{gap:8px}.card{padding:12px 9px 8px}.card h3{font-size:15px;margin:4px 0 2px}.card p{font-size:12.5px;line-height:1.2;-webkit-line-clamp:4}.card.hasimg p{-webkit-line-clamp:1}.card:before{width:8px;height:8px;margin-left:-4px;top:3px}.tag{font-size:11px;padding:0 5px}.rank{font-size:14px;min-width:26px}.stamp{font-size:13px;right:6px;bottom:6px}.thumb{margin:4px 0 2px}.admin-row .btn.sm{font-size:12px;padding:2px 6px}.group h2{font-size:20px}.group h2 span{font-size:14px}}
+@media (max-width:760px){.main{grid-template-columns:1fr}.side{flex-direction:row;flex-wrap:wrap;order:-1}.chip{flex:1;min-width:140px}.adminbox{align-items:stretch;width:100%}.banner{display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="banner"><b>Asteria</b>Quest Board<br><small>Nơi những hành trình bắt đầu…</small></div>
+    <div class="scroll"><h1>Bảng Nhiệm Vụ</h1><p>Nhận nhiệm vụ · Hoàn thành · Nhận thưởng</p></div>
+    <div class="adminbox"><button class="btn" id="adminBtn">Đăng nhập Admin</button><button class="btn dark" id="addBtn" hidden>+ Thêm nhiệm vụ</button></div>
+  </header>
+  <section class="board">
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" data-t="guild">Nhiệm vụ Bang hội</button>
+      <button class="tab" role="tab" data-t="story">Nhiệm vụ Cốt truyện</button>
+    </div>
+    <div class="main">
+      <div id="list"></div>
+      <nav class="side" id="side" aria-label="Bộ lọc"></nav>
+    </div>
+    <p class="hint">Mỗi nhiệm vụ là một mảnh ghép của hành trình vĩ đại hơn.</p>
+  </section>
+</div>
+<div id="modalRoot"></div>
+
+<script>
+const RANKS=['F','F+','D','D+','C','C+','B','B+','A','A+','S','S+','SS','SS+','X'];
+const rcls=r=>'r-'+r.replace('+','')+(r.endsWith('+')?' plus':'');
+let pendImg=null;
+const GROUPS=[
+ {k:'low',name:'Low-Level Missions',range:'F – D+',ranks:['F','F+','D','D+']},
+ {k:'mid',name:'Mid-Level Missions',range:'C – A+',ranks:['C','C+','B','B+','A','A+']},
+ {k:'high',name:'High-Level Missions',range:'S – SS+',ranks:['S','S+','SS','SS+']},
+ {k:'secret',name:'Secret-Level Missions',range:'X',ranks:['X']}];
+const STATUS={open:'Đang mở',done:'Hoàn thành',expired:'Hết hạn',paused:'Tạm dừng'};
+const SCLS={done:'s-done',expired:'s-expired',paused:'s-paused'};
+let quests=[],tab='guild',filter='all',token='';
+try{token=sessionStorage.getItem('tk')||''}catch(e){}
+let admin=!!token;
+function logout(){admin=false;token='';try{sessionStorage.removeItem('tk')}catch(e){}}
+async function api(m,u,b){try{const r=await fetch(u,{method:m,headers:{'Content-Type':'application/json',Authorization:'Bearer '+token},body:b?JSON.stringify(b):undefined});if(r.status===401){logout();render()}return r.ok}catch(e){return false}}
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const num=n=>Number(n||0).toLocaleString('vi-VN');
+
+function render(){
+  document.querySelectorAll('.tab').forEach(t=>t.setAttribute('aria-selected',t.dataset.t===tab));
+  const side=$('#side');
+  const items=tab==='guild'?[['all','Tất cả','']].concat(GROUPS.map(g=>[g.k,g.name,'Hạng '+g.range])):[['all','Tất cả',''],['main','Cốt truyện chính',''],['char','Cốt truyện nhân vật','Theo từng nhân vật']];
+  side.innerHTML=items.map(i=>`<button class="chip" data-f="${i[0]}" aria-pressed="${filter===i[0]}">${i[1]}${i[2]?`<small>${i[2]}</small>`:''}</button>`).join('');
+  const list=quests.filter(q=>q.type===tab);
+  let html='';
+  if(tab==='guild'){
+    GROUPS.filter(g=>filter==='all'||filter===g.k).forEach(g=>{
+      const qs=list.filter(q=>g.ranks.includes(q.rank)).sort((a,b)=>RANKS.indexOf(a.rank)-RANKS.indexOf(b.rank));
+      html+=`<div class="group"><h2>${g.name}<span>Hạng ${g.range}</span></h2><div class="grid">${qs.map(card).join('')||'<div class="empty">Chưa có nhiệm vụ nào.</div>'}</div></div>`;
+    });
+  }else{
+    [['main','Cốt truyện chính'],['char','Cốt truyện nhân vật']].filter(x=>filter==='all'||filter===x[0]).forEach(x=>{
+      const qs=list.filter(q=>(q.sub||'main')===x[0]);
+      html+=`<div class="group"><h2>${x[1]}</h2><div class="grid">${qs.map(card).join('')||'<div class="empty">Chưa có nhiệm vụ nào.</div>'}</div></div>`;
+    });
+  }
+  $('#list').innerHTML=html;
+  $('#addBtn').hidden=!admin;
+  $('#adminBtn').textContent=admin?'Admin · Đăng xuất':'Đăng nhập Admin';
+}
+function card(q){
+  const off=q.status!=='open';
+  return `<div class="card ${off?'off':''} ${q.img?'hasimg':''}" data-id="${q.id}" tabindex="0" role="button">
+   <div class="meta"><span class="tag ${q.type==='story'?'story':''}">${q.type==='guild'?'Bang hội':q.sub==='char'?'Nhân vật'+(q.char?' · '+esc(q.char):''):'Cốt truyện'}</span>${q.type==='guild'?`<span class="rank ${rcls(q.rank)}">${q.rank}</span>`:''}</div>
+   ${q.img?`<img class="thumb" src="${q.img}" alt="">`:''}<h3>${esc(q.title)}</h3><p>${esc(q.desc)}</p>
+   ${off?`<span class="stamp ${SCLS[q.status]}">${STATUS[q.status]}</span>`:''}
+   ${admin?`<div class="admin-row"><button class="btn sm" data-edit="${q.id}">Sửa</button><button class="btn sm red" data-del="${q.id}">Xoá</button></div>`:''}</div>`;
+}
+function openModal(html){
+  $('#modalRoot').innerHTML=`<div class="modal-bg" id="mbg"><div class="modal" role="dialog" aria-modal="true"><button class="x" aria-label="Đóng" data-close>×</button>${html}</div></div>`;
+  const f=document.querySelector('#modalRoot input,#modalRoot .x');f&&f.focus();
+}
+function closeModal(){$('#modalRoot').innerHTML=''}
+function detail(id){
+  const q=quests.find(x=>x.id===id);if(!q)return;
+  let h=`<h2>${esc(q.title)}</h2>${q.img?`<img class="thumb" src="${q.img}" alt="">`:''}<p>${esc(q.desc)}</p><dl class="rows">
+   <dt>Loại</dt><dd>${q.type==='guild'?'Nhiệm vụ Bang hội':q.sub==='char'?'Cốt truyện nhân vật':'Cốt truyện chính'}</dd>${q.type==='story'&&q.sub==='char'?`<dt>Nhân vật</dt><dd>${esc(q.char||'—')}</dd>`:''}`;
+  if(q.type==='guild')h+=`<dt>Độ khó</dt><dd><span class="rank ${rcls(q.rank)}">${q.rank}</span> ${q.rank==='X'?'Không xác định — có thể dễ như hạng F hoặc khó hơn hạng SS':''}</dd>`;
+  h+=`<dt>Khu vực</dt><dd>${esc(q.area||'—')}</dd><dt>Trạng thái</dt><dd class="${SCLS[q.status]||''}"><b>${STATUS[q.status]}</b></dd></dl>`;
+  if(q.type==='guild')h+=`<b>Thưởng</b><div class="reward"><span>🪙 ${num(q.gold)} Coin</span><span><i class="aster">✦</i> ${num(q.gem)} Aster</span>${q.stat?`<span>📈 ${num(q.stat)} điểm Stats</span>`:''}${q.skill?`<span>📜 ${num(q.skill)} Skill Point</span>`:''}${q.item?`<span>🎁 ${esc(q.item)}</span>`:''}</div>`;
+  if(admin)h+=`<div class="foot"><b>Đổi trạng thái:</b><br>${Object.keys(STATUS).map(s=>`<button class="btn sm" data-st="${s}" data-id="${q.id}">${STATUS[s]}</button>`).join(' ')}</div>`;
+  openModal(h);
+}
+function form(id){
+  const q=quests.find(x=>x.id===id)||{type:tab,rank:'F',status:'open',gold:0,gem:0};
+  const g=q.type==='guild';pendImg=q.img||null;
+  openModal(`<h2>${id?'Chỉnh sửa':'Thêm'} nhiệm vụ</h2>
+  <label>Loại<select id="fType" ${id?'disabled':''}><option value="guild" ${g?'selected':''}>Bang hội</option><option value="story" ${g?'':'selected'}>Cốt truyện</option></select></label>
+  <label>Tên<input id="fTitle" value="${esc(q.title)}"></label>
+  <label>Mô tả<textarea id="fDesc" rows="3">${esc(q.desc)}</textarea></label>
+  <label>Khu vực<input id="fArea" value="${esc(q.area)}"></label>
+  <div id="sOnly" ${g?'hidden':''}><label>Nhánh cốt truyện<select id="fSub"><option value="main" ${q.sub!=='char'?'selected':''}>Cốt truyện chính</option><option value="char" ${q.sub==='char'?'selected':''}>Cốt truyện nhân vật</option></select></label><label>Tên nhân vật (nếu là cốt truyện nhân vật)<input id="fChar" value="${esc(q.char)}"></label></div>
+  <div id="gOnly" ${g?'':'hidden'}>
+   <label>Độ khó<select id="fRank">${RANKS.map(r=>`<option ${q.rank===r?'selected':''}>${r}</option>`).join('')}</select></label>
+   <div class="two"><label>Coin 🪙<input id="fGold" type="number" min="0" value="${q.gold||0}"></label><label>Aster ✦<input id="fGem" type="number" min="0" value="${q.gem||0}"></label></div>
+   <div class="two"><label>Điểm Stats<input id="fStat" type="number" min="0" value="${q.stat||0}"></label><label>Skill Point<input id="fSkill" type="number" min="0" value="${q.skill||0}"></label></div>
+   <label>Vật phẩm thưởng<input id="fItem" value="${esc(q.item)}"></label></div>
+  <label>Ảnh mô tả<input id="fImg" type="file" accept="image/*"></label><div id="imgPrev">${pendImg?`<img class="thumb" src="${pendImg}" alt=""><button class="btn sm red" data-rmimg>Xoá ảnh</button>`:''}</div>
+  <label>Trạng thái<select id="fStatus">${Object.keys(STATUS).map(s=>`<option value="${s}" ${q.status===s?'selected':''}>${STATUS[s]}</option>`).join('')}</select></label>
+  <p class="err" id="fErr"></p><div class="foot"><button class="btn" data-save="${id||0}">Lưu</button></div>`);
+}
+async function saveForm(id){
+  const v=s=>$(s).value.trim(),title=v('#fTitle');
+  if(!title){$('#fErr').textContent='Vui lòng nhập tên nhiệm vụ.';return}
+  const type=v('#fType'),o={type,title,desc:v('#fDesc'),area:v('#fArea'),status:v('#fStatus'),img:pendImg};
+  if(type==='story')Object.assign(o,{sub:v('#fSub'),char:v('#fChar')});
+  if(type==='guild')Object.assign(o,{rank:v('#fRank'),gold:+v('#fGold')||0,gem:+v('#fGem')||0,stat:+v('#fStat')||0,skill:+v('#fSkill')||0,item:v('#fItem')});
+  const obj=id?Object.assign({id},o):Object.assign({id:Date.now()},o);
+  if(!(await api('POST','/api/quests',obj))){$('#fErr').textContent='Không lưu được. Hãy đăng nhập lại hoặc thử lại.';return}
+  const i=quests.findIndex(x=>x.id===obj.id);if(i<0)quests.push(obj);else quests[i]=obj;
+  closeModal();tab=type;filter='all';render();
+}
+function login(){
+  openModal(`<h2>Đăng nhập Admin</h2><label>Mật khẩu<input id="pw" type="password" autocomplete="off"></label><p class="err" id="pErr"></p><div class="foot"><button class="btn" data-login>Đăng nhập</button></div>`);
+}
+async function tryLogin(){
+  const r=await fetch('/api/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({password:$('#pw').value})}).catch(()=>null);
+  if(r&&r.ok){token=(await r.json()).token;try{sessionStorage.setItem('tk',token)}catch(e){}admin=true;closeModal();render()}
+  else $('#pErr').textContent=r&&r.status===429?'Thử quá nhiều lần. Hãy đợi vài phút.':'Sai mật khẩu. Hãy thử lại.';
+}
+document.addEventListener('click',e=>{
+  const t=e.target,c=s=>t.closest(s);
+  if(c('[data-close]')||t.id==='mbg')return closeModal();
+  if(c('[data-login]'))return tryLogin();
+  if(c('[data-save]'))return saveForm(+c('[data-save]').dataset.save);
+  if(c('[data-st]')){const b=c('[data-st]'),q=quests.find(x=>x.id===+b.dataset.id);q.status=b.dataset.st;api('POST','/api/quests',q);render();return detail(q.id)}
+  if(c('[data-rmimg]')){pendImg=null;return prev()}
+  if(c('[data-edit]'))return form(+c('[data-edit]').dataset.edit);
+  if(c('[data-del]')){const id=+c('[data-del]').dataset.del,q=quests.find(x=>x.id===id);return openModal(`<h2>Xoá nhiệm vụ?</h2><p>Bạn sắp xoá "<b>${esc(q&&q.title)}</b>". Hành động này không thể hoàn tác.</p><div class="foot"><button class="btn dark" data-close>Huỷ</button> <button class="btn red" data-delok="${id}">Xoá</button></div>`)}
+  if(c('[data-delok]')){const id=+c('[data-delok]').dataset.delok;api('DELETE','/api/quests/'+id);quests=quests.filter(x=>x.id!==id);closeModal();return render()}
+  if(c('.tab')){tab=c('.tab').dataset.t;filter='all';return render()}
+  if(c('.chip')){filter=c('.chip').dataset.f;return render()}
+  if(c('.card'))return detail(+c('.card').dataset.id);
+  if(c('#adminBtn')){if(admin){logout();render()}else login();return}
+  if(c('#addBtn'))return form(0);
+});
+function prev(){$('#imgPrev').innerHTML=pendImg?`<img class="thumb" src="${pendImg}" alt=""><button class="btn sm red" data-rmimg>Xoá ảnh</button>`:''}
+document.addEventListener('change',e=>{
+  if(e.target.id==='fImg'&&e.target.files[0]){const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{const k=Math.min(1,640/im.width),c=document.createElement('canvas');c.width=im.width*k;c.height=im.height*k;c.getContext('2d').drawImage(im,0,0,c.width,c.height);pendImg=c.toDataURL('image/jpeg',.75);prev()};im.src=r.result};r.readAsDataURL(e.target.files[0])}if(e.target.id==='fType'){$('#gOnly').hidden=e.target.value!=='guild';$('#sOnly').hidden=e.target.value==='guild'}});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape')closeModal();
+  if(e.key==='Enter'){if($('#pw'))tryLogin();else if(e.target.classList&&e.target.classList.contains('card'))detail(+e.target.dataset.id)}
+});
+render();
+fetch('/api/quests').then(r=>r.json()).then(d=>{quests=d;render()}).catch(()=>{$('#list').innerHTML='<div class="empty">Không tải được nhiệm vụ. Hãy tải lại trang.</div>'});
+</script>
+</body>
+</html>
